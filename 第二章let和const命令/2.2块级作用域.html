@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //es5只有全局作用域和函数作用域，没有块级作用域，这带来了很多不合理的场景
+    //第一种场景，内层变量可能会覆盖外层变量
+    (function(){
+        var tmp = new Date();
+        function f(){
+            console.log(tmp);
+            if(true){
+                var tmp = "hello world";
+            }
+        }
+        f();   //undefined
+
+        //第二种场景，用来计数的循环变量泄露为全局变量
+        var s = 'hello';
+        for (var i = 0;i < s.length;i+=1){
+            console.log(s[i]);
+        }
+        console.log(i);
+    })();
+</script>
+</body>
+</html>

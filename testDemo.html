@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="http://google.github.io/traceur-compiler/bin/traceur.js" type="text/javascript"></script>
+</body>
+<script type="text/javascript">
+    $traceurRuntime.ModuleStore.getAnonymousModule(function() {
+        "use strict";
+        console.log([1, 2, 3].map(function(x) {
+            return x * x;
+        }));
+        return {};
+    });
+</script>
+</html>

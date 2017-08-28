@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    (function(){
+        //变量i是var声明的，在全局范围内都有效。所以每一次循环，新的i值都会覆盖旧值，导致最后输出的是最后一轮的i值
+        var a = [];
+        for(var i = 0;i < 10;i++){
+            a[i] = function(){
+                console.log(i);
+            }
+        }
+        a[6]();   //10
+
+        //如果使用let，生命的变量仅在块级作用域内有效，最后将输出6
+        var b = [];
+        for(let j = 0; j < 20; j++){
+            b[j] = function(){
+                console.log(j);
+            };
+        }
+        b[6]();
+
+        //暂时性死区
+        var tem = 123;
+        if(true){
+//            tem = 'abc';   //在生命之前使用这些变量，就会报错
+            let tem;
+            tem = 'abc';
+        }
+        console.log(tem);
+//        function bar(x = y,y = 2){
+//            return [x,y];
+//        }
+//        function bar(x = 2,y = x){
+//            return [x,y];
+//        }
+//        bar();  //第一个函数报错
+
+        //不允许重复声明
+        //let不允许在相同作用域内重复声明同一个变量
+        //报错
+        function a (){
+            let a = 10;
+            var a = 10;
+        }
+        //报错
+        function (){
+            let a = 1;
+            let b = 10;
+        }
+        //因此不能再函数内部重新声明函数
+        function func(arg){
+            let arg;  //报错
+        }
+        function func(arg){
+            {
+                let arg; // 不报错
+            }
+        }
+
+    })();
+</script>
+</body>
+</html>
