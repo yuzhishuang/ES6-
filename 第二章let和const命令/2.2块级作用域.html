@@ -23,7 +23,70 @@
         for (var i = 0;i < s.length;i+=1){
             console.log(s[i]);
         }
-        console.log(i);
+        console.log(i);  //5
+
+        //let实际上为JavaScript新增了块级作用域
+        //两个代码块都声明了变量n，运行后输出6。这表示外层代码不受内层代码块的影响。如果使用var定义变量n，最后输出的值就是10
+        function f1(){
+            let n = 6;
+            if(true){
+                let n = 10;
+            }
+            console.log(n);  //6
+        }
+
+//        ES6允许块级作用域任意嵌套
+        //下面的代码使用了一个5层的块级作用域。
+        {{{{let insane = 'hello world'}}}};
+        //外层作用域无法读取内层作用域的变量
+        {{{{
+            {let insane = 'hello world'};
+            console.log(insane);  //报错
+        }}}}
+        //内层作用域可以定义外层作用域的同名变量
+        {{{{
+            let insane = 'hello world';
+            {let insane = 'hello world';}
+        }}}}
+        //块级作用域的出现，实际上使得获得广泛应用的立即执行匿名函数（IIFE）不在必要了
+        //IIFE写法
+        (function(){
+            var tmp = 1;
+        })();
+        //块级作用域写法
+        {
+            let tmp = 1;
+        }
+
+        //另外，ES6也规定，函数本身的作用域在其所在的块级作用域之内
+        function f(){console.log('I am outside!');}
+        (function(){
+            if(false){
+                //重复声明一次函数f
+                function f(){console.log('I am inside!');}
+            }
+            f();
+        })();
+        //上面代码在ES5中运行，会得到I am inside!，但是在ES6中运行，会得到I am outside!.这是因为ES5存在函数提升，不管会不会进入if代码块，函数声明都会提升到当前作用域的顶部而得到执行
+        //而ES6支持块级作用域，不管会不会进入if代码块，其内部声明的函数都不会影响到作用域的外部
+
+        {
+            let a = 'secret';
+            function f(){
+                return a;
+            }
+        }
+        f();  //报错
+        //上面的代码中，块级作用域外部无法调用块级作用域内部定义的函数。如果确实需要调用，则要像下面这样处理
+        let f;
+        {
+            let a = 'secret';
+            f = function(){
+                return a;
+            }
+        }
+        f();  //"secret“
+
     })();
 </script>
 </body>
