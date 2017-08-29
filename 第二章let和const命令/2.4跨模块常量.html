@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //const声明的常量只在当前代码块有效。如果想跨模块的常量，可以采用下面的写法。
+    //constants.js模块
+    export const A = 1;
+    export const B = 3;
+    export const C = 4;
+
+    //test1.js模块
+    import * as constants from './constants';
+    console.log(constants.A);  //1
+    console.log(constants.B);  //3
+
+    //test2.js模块
+    import {A,B} from './constants';
+    console.log(A);  //1
+    console.log(B);  //3
+</script>
+</body>
+</html>

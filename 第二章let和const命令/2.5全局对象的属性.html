@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //ES6规定：var命令和function命令声明的全局变量依旧是全局变量的属性；另一方面规定，let命令、const命令和class命令声明的全局变量不属于全局对象的属性
+    var a  = 1;  //如果在node.js的PRPL环境，可以写成global.a,或者采用通用方法，写成this.a
+    window.a  //1
+
+    let b = 1;
+    window.b  //undefined
+</script>
+</body>
+</html>
