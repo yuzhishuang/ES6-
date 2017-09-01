@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//解构不仅可以用于数组，还可以用于对象
+    var {foo,bar} = {foo:"aaa",bar:"bbb"};
+    foo  //"aaa"
+    bar  //"bbb"
+
+    var {bar,foo} = {foo:"aaa",bar:"bbb"};
+    foo  //"aaa"
+    bar  //"bbb"
+
+    var {baz} = {foo:"aaa",bar:"bbb"};
+    baz  //undefined
+//如果变量名和属性名不一致，必须写成下面这样
+    var {foo:baz} = {foo:"aaa",bar:"bbb"};
+    baz //"aaa"
+
+    let obj = {first:"hello",last:'world'};
+    let {first:f,last:l} = obj;
+    f //'hello'
+    l //'world'
+
+    var {foo:baz} = {foo:"aaa",bar:"bbb"};
+    baz  //"aaa"
+    foo  //error:foo is not defined
+
+//采用这种写法时，变量的声明和赋值是一体的，对于let和const而言，变量不能重新声明，所以一旦赋值的变量以前声明过，就会报错
+    let foo;
+    let {foo} = {foo:1};  //syntaxError: Duplicate declaration "foo"
+
+    let foo;
+    ({foo} = {foo:1});  //成功
+
+//和数组一样，解构也可以用于嵌套结构的对象
+//注意，这时p是模式，不是变量，因此不会被赋值
+    var obj = {
+        p: [
+                "Hello",
+            { y: "world"}
+        ]
+    };
+    var {p:[x,{y}]} = obj;
+    x // Hello
+    y // world
+
+//下面的代码中，只有line是变量，loc和start都是模式，不会被赋值
+    var node = {
+        loc:{
+            start:{
+                line:1,
+                column:5
+            }
+        }
+    };
+    var {loc:{start:{line}}} = node;
+    line  //1
+    loc  //error:loc is undefined
+    start  //error:start is undefined
+
+//下面是嵌套赋值的例子
+   let obj = {};
+   let arr = [];
+   ({foo:obj.prop,bar:arr[0]} = {foo:124,bar:true});
+    obj  //{prop:123}
+    arr  //[true]
+
+//对象的解构也可以指定默认值
+    var {x = 3} = {};
+    x  //3
+
+    var {x,y = 5} = {x: 1};
+    x  //1
+    y  //5
+
+</script>
+</body>
+</html>
