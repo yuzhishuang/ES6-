@@ -3,18 +3,21 @@
     <img src="./assets/logo.png">
     <HelloWorld/>
     <ArrayContent/>
+    <FunctionContent/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
 import ArrayContent from './components/ArrayContent'
+import FunctionContent from './components/FunctionContent'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    ArrayContent
+    ArrayContent,
+    FunctionContent
   }
 }
 </script>
