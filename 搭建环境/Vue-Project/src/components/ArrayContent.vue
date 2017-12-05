@@ -50,6 +50,9 @@ export default {
       console.log(Array())
       console.log(Array(3))
       console.log(Array(1,2))
+      //  扩展运算符是三个点...。它好比rest参数的逆运算，将一个数组转为用逗号分隔的参数序列
+      console.log('扩展运算符')
+      console.log(...[1, 2, 3])
     },
     countSymbols (string) {
       return Array.from(string).length
