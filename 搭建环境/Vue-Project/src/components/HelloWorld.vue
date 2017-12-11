@@ -1,7 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+<<<<<<< HEAD
+=======
     <h2>Ecosystem</h2>
+>>>>>>> 4d8333a8f4457fdc8975c50426246c2245228c54
   </div>
 </template>
 
