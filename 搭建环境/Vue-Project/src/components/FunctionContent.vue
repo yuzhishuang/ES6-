@@ -38,6 +38,14 @@ export default {
         array.push(items)
         console.log(items)
       })
+      //  嵌套的箭头函数
+      console.log('嵌套的箭头函数')
+      let plus1 = a => a + 1
+      let mults2 = a => a * 2
+      let addThenMult = this.pipeline(plus1, mults2)
+    },
+    pipeline () {
+      
     },
     add (...values) {
       let sum = 0
