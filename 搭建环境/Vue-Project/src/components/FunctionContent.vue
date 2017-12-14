@@ -40,12 +40,43 @@ export default {
       })
       //  嵌套的箭头函数
       console.log('嵌套的箭头函数')
-      let plus1 = a => a + 1
-      let mults2 = a => a * 2
-      let addThenMult = this.pipeline(plus1, mults2)
+      //  Reflect.ownKeys方法可以返回所有类型的键名，包括常规键名和Symbol键名
+      let obj = {
+        [Symbol('my_key')]: 1,
+        enum: 2,
+        nonEnum: 3
+      }
+      console.log(Reflect.ownKeys(obj))
+      //  Proxy概述
+      this.proxyYzs()
     },
-    pipeline () {
-      
+    proxyYzs () {
+      //  一个技巧是将Proxy对象设置到object.proxy属性，从而可以在object对象上使用
+      let proxy = new Proxy({}, {
+        get: function (target, property) {
+          return 35
+        }
+      })
+      let obj1 = Object.create(proxy)
+      console.log(obj1.time)
+      console.log('Proxy实例的方法')
+      let person = {name: '张三'}
+      let proxy1 = new Proxy(person, { get: function (target, property) { if (property in target) { return target[property] } else { throw new ReferenceError(property + 'does not exist.') } } })
+      console.log(proxy1.name)
+      //  console.log(proxy1.age)   报错
+      //  get方法可以继承
+      let proto = new Proxy({}, {
+        get (target, propertyKey, receiver) {
+          console.log('GET' + propertyKey)
+          return target[propertyKey]
+        }
+      })
+      let obj2 = Object.create(proto)
+      console.log(obj2.xxx)
+      this.proxySet()
+    },
+    proxySet () {
+      console.log('set()方法')
     },
     add (...values) {
       let sum = 0

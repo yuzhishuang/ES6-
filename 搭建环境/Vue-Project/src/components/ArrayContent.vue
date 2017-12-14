@@ -47,17 +47,6 @@ export default {
       console.log(Array.of(3))
       console.log(Array.of(3, 11, 8))
       //  Array方法没有参数、有一个参数或有三个参数，返回结果都不一样。只有参数个数不少于2个时，Array()才会返回由参数组成的新数组。参数个数只有一个时，实际上是指定数组的长度
-<<<<<<< HEAD
-      console.log(Array())
-      console.log(Array(3))
-      console.log(Array(1,2))
-      //  扩展运算符是三个点...。它好比rest参数的逆运算，将一个数组转为用逗号分隔的参数序列
-      console.log('扩展运算符')
-      console.log(...[1, 2, 3])
-=======
-      //  console.log(Array(1))
-      //  console.log(Array(3))
-      //  console.log(Array(1, 2))
       //  fill方法使用给定值填充数组
       let arr2 = ['a', 'b', 'c']
       console.log(arr2.fill(7))
@@ -100,7 +89,6 @@ export default {
       //  let arr3 = [1990, 1991, 1992, 1994, 2000, 2001, 2005]
       //  let arr4 = [for (year of arr3) if (year > 2000) year]
       //  console.log(arr4)
->>>>>>> 4d8333a8f4457fdc8975c50426246c2245228c54
     },
     countSymbols (string) {
       return Array.from(string).length
