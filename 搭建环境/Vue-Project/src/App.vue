@@ -4,6 +4,9 @@
     <HelloWorld/>
     <ArrayContent/>
     <FunctionContent/>
+    <setContent />
+    <generatorContent />
+    <promiseContent />
   </div>
 </template>
 
@@ -11,13 +14,19 @@
 import HelloWorld from './components/HelloWorld'
 import ArrayContent from './components/ArrayContent'
 import FunctionContent from './components/FunctionContent'
+import setContent from './components/setContent'
+import generatorContent from './components/generatorContent'
+import promiseContent from './components/promiseContent'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
     ArrayContent,
-    FunctionContent
+    FunctionContent,
+    setContent,
+    generatorContent,
+    promiseContent
   }
 }
 </script>
