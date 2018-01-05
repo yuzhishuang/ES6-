@@ -7,6 +7,7 @@
     <setContent />
     <generatorContent />
     <promiseContent />
+    <asyncContent />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import FunctionContent from './components/FunctionContent'
 import setContent from './components/setContent'
 import generatorContent from './components/generatorContent'
 import promiseContent from './components/promiseContent'
+import asyncContent from './components/asyncContent'
 
 export default {
   name: 'app',
@@ -26,7 +28,8 @@ export default {
     FunctionContent,
     setContent,
     generatorContent,
-    promiseContent
+    promiseContent,
+    asyncContent
   }
 }
 </script>
