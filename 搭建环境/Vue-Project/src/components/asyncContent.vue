@@ -10,6 +10,7 @@ export default {
   methods: {
     demo () {
       console.log('异步操作和async函数')
+      //  回调函数，JavaScript语言对异步编程的实现就是回调函数
     }
   },
   created () {
