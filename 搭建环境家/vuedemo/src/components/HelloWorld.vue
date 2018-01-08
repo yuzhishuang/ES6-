@@ -1,10 +1,22 @@
   <template>
     <div class="hello">
       <h1>{{ msg }}</h1>
+      <objectPart />
+      <setContent />
+      <iteratorContent />
+      <generatorContent />
+      <asyncContent />
+      <finalContent />
     </div>
   </template>
 
   <script>
+  import objectPart from './Object.vue'
+  import setContent from './setContent.vue'
+  import iteratorContent from './iteratorContent.vue'
+  import generatorContent from './generatorContent.vue'
+  import asyncContent from './asyncContent.vue'
+  import finalContent from './finalContent.vue'
   export default {
     name: 'HelloWorld',
     data () {
@@ -66,7 +78,7 @@
         this.jiantouFunction()
       },
       jiantouFunction () {
-        
+        //  es6允许使用箭头(=>)定义函数
       },
       f (x, y, z) {
         console.log(x, y, z)
@@ -74,6 +86,14 @@
     },
     created () {
       this.ArrayDemo()
+    },
+    components: {
+      objectPart: objectPart,
+      setContent: setContent,
+      iteratorContent: iteratorContent,
+      generatorContent: generatorContent,
+      asyncContent: asyncContent,
+      finalContent: finalContent
     }
   }
   </script>
